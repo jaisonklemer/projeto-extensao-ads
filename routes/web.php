@@ -1,7 +1,8 @@
 <?php
 
 use App\Http\Controllers\AlunosController;
-use App\Models\Aluno;
+use App\Http\Controllers\CursoController;
+use App\Http\Controllers\ProfessorController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,10 +21,12 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    $alunos = Aluno::all();
+
     return view('dashboard', compact('alunos'));
 })->middleware(['auth'])->name('dashboard');
 
 Route::resource('/alunos', AlunosController::class);
+Route::resource('/cursos', CursoController::class);
+Route::resource('/professores', ProfessorController::class);
 
 require __DIR__.'/auth.php';

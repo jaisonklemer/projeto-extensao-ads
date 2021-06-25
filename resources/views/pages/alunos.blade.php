@@ -73,4 +73,17 @@
 
     </div>
 
+    <div class="py-12">
+    @if(count($alunos) > 0)
+            <div class="mt-2 bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="flex space-x-3 m-4 text-sm font-medium">
+                    <div class="flex-auto flex space-x-3">
+                    @include('components.alunos.alunos')
+                    </div>
+
+                </div>
+            </div>
+            @endif
+    </div>
+
 </x-app-layout>
