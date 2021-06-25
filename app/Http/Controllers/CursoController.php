@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Aluno;
 use Illuminate\Http\Request;
 
-class AlunosController extends Controller
+class CursoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +13,7 @@ class AlunosController extends Controller
      */
     public function index()
     {
-        $alunos = Aluno::all();
-        return view('pages.alunos', compact('alunos'));
+        //
     }
 
     /**
@@ -36,21 +34,7 @@ class AlunosController extends Controller
      */
     public function store(Request $request)
     {
-        $aluno = new Aluno();
-
-        $aluno->name = $request->input('name');
-        $aluno->email = $request->input('email');
-        $aluno->UF_Nacionalidade = $request->input('uf');
-        $aluno->Data_Nascimento = $request->input('dataNascimento');
-        $aluno->sexo = $request->input('sexo');
-        $aluno->Raca = $request->input('raca');
-        $aluno->FormaIngresso = $request->input('ingresso');
-        $aluno->Curso = $request->input('curso');
-        $aluno->Status = $request->input('status');
-
-        $aluno->save();
-
-        return redirect('/dashboard');
+        //
     }
 
     /**
