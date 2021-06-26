@@ -49,6 +49,7 @@ class ProfessorController extends Controller
         $professor = new Professor();
 
         $professor->name = $request->input('name');
+        $professor->email = $request->input('email');
 
         $professor->save();
 

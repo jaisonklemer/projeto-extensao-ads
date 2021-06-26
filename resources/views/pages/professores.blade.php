@@ -21,6 +21,11 @@
                             <x-input id="name" class="block mt-1 w-full" type="text" name="name" required autofocus />
                         </div>
 
+                        <div class="mr-4" style="width: 400px">
+                            <x-label for="email" :value="__('Email')" />
+                            <x-input id="email" class="block mt-1 w-full" type="text" name="email" required autofocus />
+                        </div>
+
                         <div class="mr-4">
                             <x-label for="curso" :value="__('Curso')" />
                             <x-select id="name" class="block mt-1 w-full" name="curso[]" required autofocus :options="$cursos" :keyIndex="'id'" :textIndex="'name'" multiple="multiple"/>

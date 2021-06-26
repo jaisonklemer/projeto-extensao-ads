@@ -111,6 +111,7 @@ class AlunosController extends Controller
             $aluno->save();
         }
         return redirect('/alunos');
+        return $request;
     }
 
     /**

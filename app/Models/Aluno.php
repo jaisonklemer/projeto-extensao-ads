@@ -11,6 +11,6 @@ class Aluno extends Model
     protected $table = 'alunos';
 
     public function curso(){
-        return $this->hasOne(Curso::class, 'id');
+        return $this->hasOne(Curso::class, 'id', 'curso_id');
     }
 }
