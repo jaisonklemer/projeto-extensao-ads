@@ -11,22 +11,22 @@
                 <div class="flex space-x-3 m-4 text-sm font-medium">
                     <div class="flex-auto flex space-x-3">
                         <a class="py-2 px-4 bg-green-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75 p-2" href="/alunos">
-                            Cadastrar Alunos
+                            Painel Alunos
                         </a>
                     </div>
                 </div>
 
                 <div class="flex space-x-3 m-4 text-sm font-medium">
                     <div class="flex-auto flex space-x-3">
-                        <a class="py-2 px-4 bg-green-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75 p-2" href="/alunos">
-                            Cadastrar Professores
+                        <a class="py-2 px-4 bg-green-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75 p-2" href="/professores">
+                            Painel Professores
                         </a>
                     </div>
                 </div>
                 <div class="flex space-x-3 m-4 text-sm font-medium">
                     <div class="flex-auto flex space-x-3">
-                        <a class="py-2 px-4 bg-green-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75 p-2" href="/alunos">
-                            Cadastrar Cursos
+                        <a class="py-2 px-4 bg-green-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75 p-2" href="/cursos">
+                        Painel Cursos
                         </a>
                     </div>
                 </div>

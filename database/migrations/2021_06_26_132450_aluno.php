@@ -15,7 +15,7 @@ class Aluno extends Migration
     {
         Schema::create('alunos', function (Blueprint $table) {
 
-            $table->bigIncrements('id')->primary();
+            $table->increments('id');
             $table->string('matricula');
             $table->string('name');
             $table->string('email')->unique();
@@ -24,8 +24,9 @@ class Aluno extends Migration
             $table->string('sexo');
             $table->string('raca');
             $table->string('forma_ingresso');
-            $table->string('curso');
             $table->string('status');
+            $table->integer('curso_id')->unsigned();
+            $table->foreign('curso_id')->references('id')->on('cursos');
             $table->timestamps();
         });
     }

@@ -7,5 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Professor extends Model
 {
-    use HasFactory;
+    // use HasFactory;
+    protected $table = 'professores';
+
+    function cursos() {
+        return $this->belongsToMany("App\Models\Curso", "alocacoes")->withPivot('curso_id');
+        }
+
 }

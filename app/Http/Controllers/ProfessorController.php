@@ -2,10 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Alocacao;
+use App\Models\Curso;
+use App\Models\Professor;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
 class ProfessorController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +23,10 @@ class ProfessorController extends Controller
      */
     public function index()
     {
-        //
+        $professores = Professor::with('cursos')->get();
+        $cursos = Curso::all();
+
+        return view('pages.professores', compact('professores', 'cursos'));
     }
 
     /**
@@ -23,7 +36,6 @@ class ProfessorController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -34,7 +46,25 @@ class ProfessorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $professor = new Professor();
+
+        $professor->name = $request->input('name');
+
+        $professor->save();
+
+        foreach ($request->input('curso') as $curso) {
+            $alocacao = new Alocacao();
+
+            $alocacao->professor_id = $professor->id;
+
+            $alocacao->curso_id = $curso;
+
+            $alocacao->save();
+        }
+
+
+        return redirect('/professores');
+        // return $request;
     }
 
     /**
@@ -56,7 +86,9 @@ class ProfessorController extends Controller
      */
     public function edit($id)
     {
-        //
+        $professor = Professor::find($id);
+        $cursos = Curso::all();
+        return view('pages.edit.professor', compact('professor', 'cursos'));
     }
 
     /**
@@ -68,7 +100,28 @@ class ProfessorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $professor = Professor::find($id);
+
+        if (isset($professor)) {
+            $professor = new Professor();
+
+            $professor->name = $request->input('name');
+
+            $professor->save();
+
+            foreach ($request->input('curso') as $curso) {
+                $alocacao = new Alocacao();
+
+                $alocacao->professor_id = $professor->id;
+
+                $alocacao->curso_id = $curso;
+
+                $alocacao->save();
+            }
+        }
+
+
+        return redirect('/professores');
     }
 
     /**
@@ -79,6 +132,13 @@ class ProfessorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $professor = Professor::find($id);
+        try {
+            $professor->delete();
+            return redirect('/professores');
+        } catch (QueryException $ex) {
+            $errors = 'Não foi possível excluir o curso';
+            return redirect()->back()->withErrors($errors);
+        }
     }
 }

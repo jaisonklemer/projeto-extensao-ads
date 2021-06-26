@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Aluno;
+use App\Models\Curso;
+use App\Models\Professor;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
 class CursoController extends Controller
@@ -13,7 +17,9 @@ class CursoController extends Controller
      */
     public function index()
     {
-        //
+        $cursos = Curso::all();
+        $professores = Professor::all();
+        return view('pages.cursos', compact('cursos', 'professores'));
     }
 
     /**
@@ -34,7 +40,13 @@ class CursoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $curso = new Curso();
+
+        $curso->name = $request->input('name');
+
+        $curso->save();
+
+        return redirect('/cursos');
     }
 
     /**
@@ -56,7 +68,8 @@ class CursoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $curso = Curso::find($id);
+        return view('pages.edit.curso', compact('curso'));
     }
 
     /**
@@ -68,7 +81,13 @@ class CursoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $curso = Curso::find($id);
+        if (isset($curso)) {
+            $curso->name = $request->input('name');
+
+            $curso->save();
+        }
+        return redirect('/cursos');
     }
 
     /**
@@ -79,6 +98,26 @@ class CursoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $curso = Curso::find($id);
+
+        if (isset($curso)) {
+            try {
+                $curso->delete();
+                return redirect('/cursos');
+               } catch(QueryException $ex){
+                   $errors = 'Não foi possível excluir o curso';
+                   return redirect()->back()->withErrors($errors);
+               }
+
+        }
+
+    }
+
+    public function alunos($id){
+
+        $alunos = Aluno::where('curso_id', $id)->get();
+        $curso = Curso::find($id);
+
+        return view('pages.list.alunos', compact('alunos', 'curso'));
     }
 }

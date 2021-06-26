@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Aluno;
+use App\Models\Curso;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,8 +20,10 @@ class AlunosController extends Controller
      */
     public function index()
     {
-        $alunos = Aluno::all();
-        return view('pages.alunos', compact('alunos'));
+        $alunos = Aluno::with('curso')->get();
+        $cursos = Curso::all();
+        // return $alunos;
+        return view('pages.alunos', compact('alunos', 'cursos'));
     }
 
     /**
@@ -43,7 +46,7 @@ class AlunosController extends Controller
     {
         $aluno = new Aluno();
 
-        // $aluno->matricula = $request->input('matricula');
+        $aluno->matricula = $request->input('matricula');
         $aluno->name = $request->input('name');
         $aluno->email = $request->input('email');
         $aluno->uf_nacionalidade = $request->input('uf');
@@ -51,12 +54,12 @@ class AlunosController extends Controller
         $aluno->sexo = $request->input('sexo');
         $aluno->Raca = $request->input('raca');
         $aluno->forma_ingresso = $request->input('ingresso');
-        $aluno->curso = $request->input('curso');
+        $aluno->curso_id = $request->input('curso');
         $aluno->status = $request->input('status');
 
         $aluno->save();
 
-        return redirect('/dashboard');
+        return redirect('/alunos');
     }
 
     /**
@@ -78,7 +81,9 @@ class AlunosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $aluno = Aluno::find($id);
+        $cursos = Curso::all();
+        return view('pages.edit.alunos', compact('aluno', 'cursos'));
     }
 
     /**
@@ -90,7 +95,22 @@ class AlunosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $aluno = Aluno::find($id);
+        if (isset($aluno)) {
+            $aluno->matricula = $request->input('matricula');
+            $aluno->name = $request->input('name');
+            $aluno->email = $request->input('email');
+            $aluno->uf_nacionalidade = $request->input('uf');
+            $aluno->data_nascimento = $request->input('dataNascimento');
+            $aluno->sexo = $request->input('sexo');
+            $aluno->Raca = $request->input('raca');
+            $aluno->forma_ingresso = $request->input('ingresso');
+            $aluno->curso_id = $request->input('curso');
+            $aluno->status = $request->input('status');
+
+            $aluno->save();
+        }
+        return redirect('/alunos');
     }
 
     /**
@@ -101,6 +121,11 @@ class AlunosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $aluno = Aluno::find($id);
+        if (isset($aluno)) {
+            $aluno->delete();
+        }
+        return redirect('/alunos');
     }
+
 }

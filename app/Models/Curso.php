@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Curso extends Model
 {
-    use HasFactory;
-
-    public function professor(){
-        return $this->belongsTo(Professor::class);
+    // use HasFactory;
+    protected $table = 'cursos';
+    public function alunos(){
+        return $this->hasMany(Aluno::class, 'curso_id');
     }
 }

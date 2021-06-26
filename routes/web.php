@@ -25,9 +25,16 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+
 Route::resource('/alunos', AlunosController::class);
+
+Route::get('/cursos/{curso}/alunos', [CursoController::class, 'alunos']);
 Route::resource('/cursos', CursoController::class);
 Route::resource('/professores', ProfessorController::class);
+
+// Route::get('/alunos/{curso}', function($curso){
+//     echo $curso;
+// });
 
 
 
