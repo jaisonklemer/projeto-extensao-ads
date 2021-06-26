@@ -4,9 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Aluno;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AlunosController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -38,15 +43,16 @@ class AlunosController extends Controller
     {
         $aluno = new Aluno();
 
+        // $aluno->matricula = $request->input('matricula');
         $aluno->name = $request->input('name');
         $aluno->email = $request->input('email');
-        $aluno->UF_Nacionalidade = $request->input('uf');
-        $aluno->Data_Nascimento = $request->input('dataNascimento');
+        $aluno->uf_nacionalidade = $request->input('uf');
+        $aluno->data_nascimento = $request->input('dataNascimento');
         $aluno->sexo = $request->input('sexo');
         $aluno->Raca = $request->input('raca');
-        $aluno->FormaIngresso = $request->input('ingresso');
-        $aluno->Curso = $request->input('curso');
-        $aluno->Status = $request->input('status');
+        $aluno->forma_ingresso = $request->input('ingresso');
+        $aluno->curso = $request->input('curso');
+        $aluno->status = $request->input('status');
 
         $aluno->save();
 

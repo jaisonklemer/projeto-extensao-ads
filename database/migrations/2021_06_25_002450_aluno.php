@@ -15,16 +15,17 @@ class Aluno extends Migration
     {
         Schema::create('alunos', function (Blueprint $table) {
 
-            $table->id();
+            $table->bigIncrements('id')->primary();
+            $table->string('matricula');
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('UF_Nacionalidade');
-            $table->string('Data_Nascimento');
-            $table->string('Sexo');
-            $table->string('Raca');
-            $table->string('FormaIngresso');
-            $table->string('Curso');
-            $table->string('Status');
+            $table->string('uf_nacionalidade');
+            $table->string('data_nascimento');
+            $table->string('sexo');
+            $table->string('raca');
+            $table->string('forma_ingresso');
+            $table->string('curso');
+            $table->string('status');
             $table->timestamps();
         });
     }

@@ -22,11 +22,13 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
 
-    return view('dashboard', compact('alunos'));
+    return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
 Route::resource('/alunos', AlunosController::class);
 Route::resource('/cursos', CursoController::class);
 Route::resource('/professores', ProfessorController::class);
 
-require __DIR__.'/auth.php';
+
+
+require __DIR__ . '/auth.php';

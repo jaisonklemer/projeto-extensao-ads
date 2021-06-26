@@ -15,13 +15,13 @@
         <tr>
             <td class="border px-4 py-2 text-emerald-600 font-medium">{{$aluno->name}}</td>
             <td class="border px-4 py-2 text-emerald-600 font-medium">{{$aluno->email}}</td>
-            <td class="border px-4 py-2 text-emerald-600 font-medium">{{$aluno->UF_Nacionalidade}}</td>
-            <td class="border px-4 py-2 text-emerald-600 font-medium">{{$aluno->Data_Nascimento}}</td>
-            <td class="border px-4 py-2 text-emerald-600 font-medium">{{$aluno->Sexo}}</td>
-            <td class="border px-4 py-2 text-emerald-600 font-medium">{{$aluno->Raca}}</td>
-            <td class="border px-4 py-2 text-emerald-600 font-medium">{{$aluno->FormaIngresso}}</td>
-            <td class="border px-4 py-2 text-emerald-600 font-medium">{{$aluno->Curso}}</td>
-            <td class="border px-4 py-2 text-emerald-600 font-medium">{{$aluno->Status}}</td>
+            <td class="border px-4 py-2 text-emerald-600 font-medium">{{$aluno->uf_nacionalidade}}</td>
+            <td class="border px-4 py-2 text-emerald-600 font-medium">{{$aluno->data_nascimento}}</td>
+            <td class="border px-4 py-2 text-emerald-600 font-medium">{{$aluno->sexo}}</td>
+            <td class="border px-4 py-2 text-emerald-600 font-medium">{{$aluno->raca}}</td>
+            <td class="border px-4 py-2 text-emerald-600 font-medium">{{$aluno->forma_ingresso}}</td>
+            <td class="border px-4 py-2 text-emerald-600 font-medium">{{$aluno->curso}}</td>
+            <td class="border px-4 py-2 text-emerald-600 font-medium">{{$aluno->status}}</td>
         </tr>
     </tbody>
     @endforeach
