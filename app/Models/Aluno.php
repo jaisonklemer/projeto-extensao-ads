@@ -8,6 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Aluno extends Model
 {
     // use HasFactory;
+
+    protected $fillable = [
+        'matricula',
+        'name',
+        'email',
+    ];
+
     protected $table = 'alunos';
 
     public function curso(){
